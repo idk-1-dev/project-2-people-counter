@@ -69,16 +69,17 @@ while True:
                 totalCountsUp.append(id)
                 cv2.line(img,(limitsUp[0],limitsUp[1]),(limitsUp[2],limitsUp[3]),(0,255,0),5)
         # # cvzone.putTextRect(img, f'Count: {len(totalCounts)}', (50, 50)) 
-    if limitsDown[0]<cx< limitsDown[2] and limitsDown[1]-15<cy<limitsDown[3]+ 15:
-        if totalCountsDown.count(id) == 0:
-                totalCountsDown.append(id)
-                cv2.line(img,(limitsDown[0],limitsDown[1]),(limitsDown[2],limitsDown[3]),(0,255,0),7)
+    if limitsDown[0]<cx< limitsDown[2] and limitsDown[1]-15<cy<limitsDown[3]+ 15: #issue in here
+        if totalCountsDown.count(id) == 0:#issue
+                totalCountsDown.append(id)#issue
+                cv2.line(img,(limitsDown[0],limitsDown[1]),(limitsDown[2],limitsDown[3]),(0,255,0),7)#issue
     
     cv2.putText(img,str(len(totalCountsUp)),(1025,335),cv2.FONT_HERSHEY_PLAIN,5,(150,200,50),7)
-    cv2.putText(img,str(len(totalCountsDown)),(1217,335),cv2.FONT_HERSHEY_PLAIN,5,(0,0,255),5)
+    cv2.putText(img,str(len(totalCountsDown)),(1217,335),cv2.FONT_HERSHEY_PLAIN,5,(0,0,255),5)#issue
     cv2.imshow("Car Detector", img)
     # cv2.imshow("image region", imgRegion)
     if cv2.waitKey(20) & 0xFF == ord('q'):
         print("\nQUIT\n")
         break
+
     cv2.waitKey(1)
